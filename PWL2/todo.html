@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Project: To-Do List ES6</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #eee;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-add {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Daftar Tugas 📝</h2>
+    <input type="text" id="inputTugas" placeholder="Tambah tugas baru...">
+    <button id="btnTambah" class="btn-add">Tambah</button>
+
+    <ul id="listTugas">
+    </ul>
+  </div>
+
+  <script>
+    // 1. Inisialisasi State (Data) menggunakan Let & Array
+    let semuaTugas = ['Belajar ES6', 'Praktikum DOM'];
+
+    const input = document.getElementById('inputTugas');
+    const tombol = document.getElementById('btnTambah');
+    const wadahList = document.getElementById('listTugas');
+
+    // 2. Fungsi untuk menampilkan data (Render) ke DOM menggunakan Map
+    const render = () => {
+      // Mengubah array string menjadi elemen HTML menggunakan .map()
+      const html = semuaTugas.map((tugas, index) => {
+        return `<li>${tugas} <span>✅</span></li>`;
+      }).join(''); // join('') untuk menghilangkan tanda koma antar array
+
+      wadahList.innerHTML = html;
+    };
+
+    // 3. Fungsi Tambah Tugas menggunakan Arrow Function & Spread Operator
+    tombol.addEventListener('click', () => {
+      const tugasBaru = input.value;
+      if (tugasBaru !== "") {
+        // Menggunakan Spread Operator untuk menambah data ke array
+        semuaTugas = [...semuaTugas, tugasBaru];
+
+        input.value = ""; // Bersihkan input
+        render(); // Update tampilan
+      } else {
+        alert("Isi tugasnya dulu, Pak!");
+      }
+    });
+
+    // Jalankan render pertama kali saat halaman dibuka
+    render();
+  </script>
+
+</body>
+
+</html>
