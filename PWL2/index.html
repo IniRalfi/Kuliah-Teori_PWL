@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Praktikum DOM ES6</title>
+  <style>
+    .pulas {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="judul">Teks Awal</h1>
+  <input type="text" id="inputNama" placeholder="Ketik namamu...">
+  <button id="btnUbah">Ubah Teks</button>
+
+  <script>
+    // Menggunakan ES6 Const & Arrow Function
+    const judul = document.getElementById('judul');
+    const input = document.getElementById('inputNama');
+    const tombol = document.getElementById('btnUbah');
+
+    // Event Listener dengan Arrow Function
+    tombol.addEventListener('click', () => {
+      const namaUser = input.value;
+      // Template Literals untuk mengubah isi HTML
+      judul.innerText = `Selamat Datang, ${namaUser}!`;
+      judul.classList.toggle('pulas');
+    });
+  </script>
+</body>
+
+</html>
