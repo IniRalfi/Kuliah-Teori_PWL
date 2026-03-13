@@ -1,0 +1,3 @@
+[submodule "MiniProjectBackendServe"]
+	path = MiniProjectBackendServe
+	url = git@github.com:IniRalfi/Mini_Project_BackendServe.git
